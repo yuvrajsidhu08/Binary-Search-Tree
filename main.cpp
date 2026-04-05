@@ -27,3 +27,20 @@ Node* findMin(Node* root) {
     while (root->left) root = root->left;
     return root;
 }
+
+Node* removeNode(Node* root, int v) {
+    if (!root) return NULL;
+
+    if (v < root->data) root->left = removeNode(root->left, v);
+    else if (v > root->data) root->right = removeNode(root->right, v);
+    else {
+        if (!root->left && !root->right) return delete root, NULL;
+        if (!root->left) return root->right;
+        if (!root->right) return root->left;
+
+        Node* temp = findMin(root->right);
+        root->data = temp->data;
+        root->right = removeNode(root->right, temp->data);
+    }
+    return root;
+}
