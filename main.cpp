@@ -44,3 +44,18 @@ Node* removeNode(Node* root, int v) {
     }
     return root;
 }
+
+bool search(Node* root, int v) {
+    if (!root) return false;
+    if (root->data == v) return true;
+    return v < root->data ? search(root->left, v) : search(root->right, v);
+}
+
+void printTree(Node* root, int space) {
+    if (!root) return;
+    space += 5;
+    printTree(root->right, space);
+    for (int i = 5; i < space; i++) cout << " ";
+    cout << root->data << endl;
+    printTree(root->left, space);
+}
