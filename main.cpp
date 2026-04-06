@@ -59,3 +59,28 @@ void printTree(Node* root, int space) {
     cout << root->data << endl;
     printTree(root->left, space);
 }
+
+void addNumbers(Node*& root, char input[]) {
+    char* token = strtok(input, " ");
+    while (token) {
+        int num = atoi(token);
+        if (num >= 1 && num <= 999)
+            root = insert(root, num);
+        token = strtok(NULL, " ");
+    }
+}
+
+int main() {
+    Node* root = NULL;
+    char command[20];
+
+    cout << "Binary Search Tree Program\n";
+    cout << "Commands:\n";
+    cout << "  add     -> enter numbers (space separated)\n";
+    cout << "  remove  -> delete a number\n";
+    cout << "  search  -> check if a number exists\n";
+    cout << "  print   -> display tree\n";
+    cout << "  quit\n";
+
+}
+
