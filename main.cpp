@@ -1,4 +1,4 @@
-#include <iostream>
+#include <iostream> 
 #include <cstring>
 #include <cstdlib>
 using namespace std;
@@ -39,9 +39,20 @@ Node* removeNode(Node* root, int v) {
     if (v < root->data) root->left = removeNode(root->left, v);
     else if (v > root->data) root->right = removeNode(root->right, v);
     else {
-        if (!root->left && !root->right) return delete root, NULL;
-        if (!root->left) return root->right;
-        if (!root->right) return root->left;
+        if (!root->left && !root->right) {
+            delete root;
+            return NULL;
+        }
+        if (!root->left) {
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        }
+        if (!root->right) {
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
 
         Node* temp = findMin(root->right);
         root->data = temp->data;
@@ -125,7 +136,7 @@ int main() {
         else if (strcmp(command, "quit") == 0) {
             break;
         }
-        // Handle invalid commands
+// Handle invalid commands
         else {
             cout << "Invalid command.\n";
         }
