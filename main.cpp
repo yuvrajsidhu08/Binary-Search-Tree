@@ -93,7 +93,27 @@ int main() {
             cin.getline(line, 200);
             addNumbers(root, line);
         }
+        else if (strcmp(command, "remove") == 0) {
+            int x;
+            cout << "Number to remove: ";
+            cin >> x;
+            root = removeNode(root, x);
+        }
+        else if (strcmp(command, "search") == 0) {
+            int x;
+            cout << "Number to search: ";
+            cin >> x;
+            cout << (search(root, x) ? "Found\n" : "Not found\n");
+        }
+        else if (strcmp(command, "print") == 0) {
+            cout << "\nTree:\n";
+            printTree(root, 0);
+        }
+        else if (strcmp(command, "quit") == 0) {
+            break;
+        }
+        else {
+            cout << "Invalid command.\n";
+        }
+    }
 }
-}
-
-
