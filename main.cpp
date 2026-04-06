@@ -82,5 +82,18 @@ int main() {
     cout << "  print   -> display tree\n";
     cout << "  quit\n";
 
+    while (true) {
+        cout << "\nEnter command: ";
+        cin >> command;
+
+        if (strcmp(command, "add") == 0) {
+            cin.ignore();
+            char line[200];
+            cout << "Enter numbers: ";
+            cin.getline(line, 200);
+            addNumbers(root, line);
+        }
 }
+}
+
 
